@@ -1,19 +1,28 @@
-import React from 'react'
-import logo from './logo.svg'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ThemeProvider } from '@mui/material/styles'
+import { CssBaseline, StyledEngineProvider } from '@mui/material'
+// defaultTheme
+import themes from './assets/themes'
+import { lazy } from 'react'
+import Loadable from './components/common/Loadable'
+import AppLayout from './layout/app/AppLayout'
+const Dashboard = Loadable(lazy(() => import('./views/dashboard')))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={themes({})}>
+        <CssBaseline />
+        <Router>
+          <Routes>
+            <Route path="/" element={<AppLayout />}>
+              <Route index path="/" element={<Dashboard />} />
+              <Route index path="/dashboard" element={<Dashboard />} />
+            </Route>
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </StyledEngineProvider>
   )
 }
 
