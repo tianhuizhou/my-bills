@@ -7,6 +7,8 @@ import { IconReceipt2 } from '@tabler/icons'
 // custom component
 import Logo from '../../components/common/Logo'
 import ProfileSection from '../../components/common/ProfileSection'
+import SearchSection from '../../components/common/SearchSection'
+import { Link } from 'react-router-dom'
 // @ts-ignore
 const TopNav = ({ handleLeftDrawerToggle }) => {
   const theme = useTheme()
@@ -23,8 +25,10 @@ const TopNav = ({ handleLeftDrawerToggle }) => {
         }}
       >
         <Box component="span" sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1, alignItems: 'center' }}>
-          <IconReceipt2 stroke={1.5} size="2.3rem" color={theme.palette.primary.main} />
-          <Logo />
+          <ButtonBase disableRipple component={Link} to={'/dashboard'}>
+            <IconReceipt2 stroke={1.5} size="2.3rem" color={theme.palette.primary.main} />
+            <Logo />
+          </ButtonBase>
         </Box>
         <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
           <Avatar
@@ -46,6 +50,7 @@ const TopNav = ({ handleLeftDrawerToggle }) => {
         </ButtonBase>
       </Box>
 
+      <SearchSection />
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
 
