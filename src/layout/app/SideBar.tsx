@@ -8,8 +8,14 @@ import Logo from '../../components/common/Logo'
 import SideMenuList from '../../components/common/SideMenuList'
 import { drawerWidth } from '../../store/constant'
 import { IconReceipt2 } from '@tabler/icons'
-// @ts-ignore
-const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
+
+interface Props {
+  drawerOpen: boolean
+  drawerToggle: () => void
+  window: null | Window
+}
+
+const Sidebar = ({ drawerOpen, drawerToggle, window }: Props) => {
   const theme = useTheme()
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'))
 

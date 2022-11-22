@@ -34,7 +34,7 @@ const AppLayout = () => {
         color="inherit"
         elevation={0}
         sx={{
-          bgcolor: theme.palette.background.default,
+          bgColor: theme.palette.background.default,
           transition: leftDrawerOpened ? theme.transitions.create('width') : 'none',
         }}
       >
@@ -45,12 +45,9 @@ const AppLayout = () => {
       {/* drawer */}
       <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} window={null} />
       {/* main content */}
-      {/*// @ts-ignore*/}
-      <MainContent theme={theme} open={leftDrawerOpened}>
-        {/* breadcrumb */}
+      <MainContent {...{ 'theme': theme, 'open': leftDrawerOpened }}>
         <Outlet />
       </MainContent>
-      {/*<Customization />*/}
     </Box>
   )
 }

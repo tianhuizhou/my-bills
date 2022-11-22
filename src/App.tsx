@@ -11,7 +11,7 @@ const Dashboard = Loadable(lazy(() => import('./views/dashboard')))
 function App() {
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={themes({})}>
+      <ThemeProvider theme={themes()}>
         <CssBaseline />
         <Router>
           <Routes>

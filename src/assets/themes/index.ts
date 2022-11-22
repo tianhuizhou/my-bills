@@ -8,12 +8,7 @@ import componentStyleOverrides from './compStyleOverride'
 import themePalette from './palette'
 import themeTypography from './typography'
 
-/**
- * Represent theme style and structure as per Material-UI
- * @param {JsonObject} customization customization parameter object
- */
-
-export const theme = (customization) => {
+export const theme = () => {
   const color = colors
 
   const themeOption = {
@@ -21,14 +16,13 @@ export const theme = (customization) => {
     heading: color.grey900,
     paper: color.paper,
     backgroundDefault: color.paper,
-    background: color.primaryLight,
+    background: color.grey100,
     darkTextPrimary: color.grey700,
     darkTextSecondary: color.grey500,
     textDark: color.grey900,
-    menuSelected: color.secondaryDark,
-    menuSelectedBack: color.secondaryLight,
+    menuSelected: color.primaryDark,
+    menuSelectedBack: color.primaryLight,
     divider: color.grey200,
-    customization,
   }
 
   const themeOptions = {
@@ -46,6 +40,7 @@ export const theme = (customization) => {
     typography: themeTypography(themeOption),
   }
 
+  // @ts-ignore
   const themes = createTheme(themeOptions)
   themes.components = componentStyleOverrides(themeOption)
 
