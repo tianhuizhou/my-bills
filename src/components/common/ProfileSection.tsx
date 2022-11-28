@@ -21,6 +21,7 @@ import {
 import { useTheme } from '@mui/material/styles'
 import User from '../../assets/image/dev-man.webp'
 import { IconLogout, IconSettings, IconUser } from '@tabler/icons'
+import api from '../../helper/api'
 
 export default function ProfileSection() {
   const theme = useTheme()
@@ -39,7 +40,10 @@ export default function ProfileSection() {
   const open = Boolean(anchorEl)
 
   const handleLogout = async () => {
-    console.log('Logout')
+    api.logout().then(() => {
+      localStorage.setItem('MyBillUser', '{}')
+      navigate('/login')
+    })
   }
   const handleListItemClick = (path: string) => {
     navigate(path)

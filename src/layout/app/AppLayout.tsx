@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -10,7 +10,7 @@ import TopNav from './TopNav'
 import Sidebar from './SideBar'
 import MainContent from './MainContent'
 
-const AppLayout = () => {
+const AppLayout = ({ is_auth, redirect_path = '/login' }: { is_auth: boolean; redirect_path: string }) => {
   const theme = useTheme()
   const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'))
 
@@ -24,6 +24,7 @@ const AppLayout = () => {
     setLeftDrawerOpened(!matchDownMd)
   }, [matchDownMd])
 
+  if (!is_auth) return <Navigate to={redirect_path} replace />
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />

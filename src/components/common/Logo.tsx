@@ -1,10 +1,10 @@
 // material-ui
 import { useTheme } from '@mui/material/styles'
 
-const Logo = () => {
+const Logo = ({ height = 80, width = 34 }: { height: number; width: number }) => {
   const theme = useTheme()
   return (
-    <svg width="80" height="34" viewBox="0 0 205.664 116.211" xmlns="http://www.w3.org/2000/svg">
+    <svg width={width} height={height} viewBox="0 0 205.664 116.211" xmlns="http://www.w3.org/2000/svg">
       <g
         id="svgGroup"
         strokeLinecap="round"

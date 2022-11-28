@@ -26,7 +26,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }: Props) => {
           {' '}
           <ButtonBase disableRipple component={Link} to={'/dashboard'}>
             <IconReceipt2 stroke={1.5} size="2.3rem" color={theme.palette.primary.main} />
-            <Logo />
+            <Logo width={80} height={34} />
           </ButtonBase>
         </Box>
       </Box>

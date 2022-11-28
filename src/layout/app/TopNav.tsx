@@ -27,7 +27,7 @@ const TopNav = ({ handleLeftDrawerToggle }) => {
         <Box component="span" sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1, alignItems: 'center' }}>
           <ButtonBase disableRipple component={Link} to={'/dashboard'}>
             <IconReceipt2 stroke={1.5} size="2.3rem" color={theme.palette.primary.main} />
-            <Logo />
+            <Logo width={80} height={34} />
           </ButtonBase>
         </Box>
         <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 // material-ui
 import { Grid } from '@mui/material'
 
@@ -8,6 +9,10 @@ import TransactionChart from './TransactionChart'
 import TransactionTable from './TransactionTable'
 
 const Dashboard = () => {
+  const [test] = useState('a')
+  useEffect(() => {
+    console.log('hello', test)
+  }, [test])
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
