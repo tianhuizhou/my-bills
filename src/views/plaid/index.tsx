@@ -1,30 +1,42 @@
-import { usePlaidLink } from 'react-plaid-link'
-import { useEffect } from 'react'
+import LaunchLinkButton from './LaunchLinkButton'
+import BankAccountCard from './BankAccountCard'
+
+import { useEffect, useState } from 'react'
+import api from '../../helper/api'
+import { Grid } from '@mui/material'
 
 const PlaidView = () => {
-  // eslint-disable-next-line no-unused-vars
-  const config = {
-    token: '',
-    onSuccess: () => {
-      console.log('Success')
-    },
-  }
-  // @ts-ignore
-  // eslint-disable-next-line no-unused-vars
-  const { open, ready } = usePlaidLink(config)
+  const [bank_account_list, setBankAccountList] = useState<{ id: number; bank_name: string }[]>([])
 
+  const loadBankAccountList = () => {
+    console.log('loading bank account list')
+    api
+      .getBankAccount()
+      .then((resp) => {
+        // @ts-ignore
+        if (resp.data) setBankAccountList(resp.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
   useEffect(() => {
-    if (ready) {
-      open()
-    }
-  }, [ready, open])
+    loadBankAccountList()
+  }, [])
   return (
-    <>
-      plaid view
-      <button type="button" onClick={() => open()} disabled={ready}>
-        Launch Link
-      </button>
-    </>
+    <div>
+      <Grid container spacing={2}>
+        {bank_account_list.map((item) => (
+          <Grid item xs={4} key={item.id}>
+            <BankAccountCard {...{ bank_credential: item }} />
+          </Grid>
+        ))}
+
+        <Grid item xs={4}>
+          <LaunchLinkButton onCreated={() => loadBankAccountList()} />
+        </Grid>
+      </Grid>
+    </div>
   )
 }
 

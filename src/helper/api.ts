@@ -33,4 +33,18 @@ export default {
     const url = `${APIURL}/token_validation`
     return axiosHelper(url, {}, {}, 'POST', getHeaders())
   },
+  getBankAccount() {
+    const url = `${APIURL}/bank_credential`
+    return axiosHelper(url, {}, {}, 'GET', getHeaders())
+  },
+  // Plaid workflow
+  createLinkToken() {
+    const url = `${APIURL}/plaid/link_token`
+    return axiosHelper(url, {}, {}, 'POST', getHeaders())
+  },
+  exchangeToken(token: string, bank_name: string) {
+    const url = `${APIURL}/plaid/access_token`
+    const body = { 'public_token': token, 'bank_name': bank_name }
+    return axiosHelper(url, {}, body, 'POST', getHeaders())
+  },
 }
