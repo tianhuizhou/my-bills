@@ -22,8 +22,10 @@ import { useTheme } from '@mui/material/styles'
 import User from '../../assets/image/dev-man.webp'
 import { IconLogout, IconSettings, IconUser } from '@tabler/icons'
 import api from '../../helper/api'
+import { AuthUserContext } from '../../store/context'
 
 export default function ProfileSection() {
+  const { user_info } = React.useContext(AuthUserContext)
   const theme = useTheme()
   const small_window = useMediaQuery(() => theme.breakpoints.down('md'))
   const navigate = useNavigate()
@@ -53,7 +55,7 @@ export default function ProfileSection() {
       <Chip
         id={'user-profile'}
         icon={<Avatar src={User} />}
-        label={small_window ? '' : 'Bobbyzzz'}
+        label={small_window ? '' : user_info.username}
         variant="outlined"
         color="primary"
         aria-haspopup="true"

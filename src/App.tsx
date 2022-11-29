@@ -13,6 +13,7 @@ import { AuthUserContext } from './store/context'
 
 const Dashboard = Loadable(lazy(() => import('./views/dashboard')))
 const Login = Loadable(lazy(() => import('./views/external/Login')))
+const PlaidView = Loadable(lazy(() => import('./views/plaid')))
 
 function App() {
   const [user_info, setUserInfo] = useState(JSON.parse(localStorage.getItem('MyBillUser') || '{}'))
@@ -27,6 +28,7 @@ function App() {
               <Route path="/" element={<AppLayout is_auth={user_info.auth_token} redirect_path={'/login'} />}>
                 <Route index path="/" element={<Dashboard />} />
                 <Route index path="/dashboard" element={<Dashboard />} />
+                <Route index path="/plaid" element={<PlaidView />} />
               </Route>
 
               <Route path="/" element={<ExternalLayout />}>

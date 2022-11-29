@@ -54,6 +54,17 @@ const SideMenuList = () => {
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItemButton>
+
+        <ListItemButton
+          selected={selectedIndex === 1}
+          sx={{ borderRadius: `12px` }}
+          onClick={() => handleListItemClick('/plaid', 1)}
+        >
+          <ListItemIcon>
+            <IconDashboard />
+          </ListItemIcon>
+          <ListItemText primary="Plaid" />
+        </ListItemButton>
       </List>
 
       {/* group divider */}

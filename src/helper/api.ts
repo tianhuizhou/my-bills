@@ -29,4 +29,8 @@ export default {
     const url = `${APIURL}/logout`
     return axiosHelper(url, {}, {}, 'POST', getHeaders())
   },
+  tokenValidation() {
+    const url = `${APIURL}/token_validation`
+    return axiosHelper(url, {}, {}, 'POST', getHeaders())
+  },
 }
