@@ -37,6 +37,7 @@ export default {
     const url = `${APIURL}/bank_credential`
     return axiosHelper(url, {}, {}, 'GET', getHeaders())
   },
+
   // Plaid workflow
   createLinkToken() {
     const url = `${APIURL}/plaid/link_token`
@@ -46,5 +47,14 @@ export default {
     const url = `${APIURL}/plaid/access_token`
     const body = { 'public_token': token, 'bank_name': bank_name }
     return axiosHelper(url, {}, body, 'POST', getHeaders())
+  },
+  getAccountBalance(id: number) {
+    const url = `${APIURL}/plaid/balance/${id}`
+    return axiosHelper(url, null, null, 'GET', getHeaders())
+  },
+  getAccountTransactions(id: number, count: number) {
+    const url = `${APIURL}/plaid/transactions/${id}`
+    const params = { 'count': count }
+    return axiosHelper(url, params, {}, 'GET', getHeaders())
   },
 }
